@@ -30,7 +30,7 @@ const EmergencyCTA: React.FC = () => {
         visible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'
       }`}
     >
-      <div className="glass hover:shadow-xl rounded-2xl p-6 max-w-sm border border-primary/20 gradient-border">
+      <div className="glass hover:shadow-xl rounded-2xl p-6 max-w-sm border border-white/30">
         <div className="flex items-start gap-4 mb-4">
           <div className="bg-red-50 p-2 rounded-full text-red-500 animate-pulse-soft">
             <AlertTriangle className="h-5 w-5" />
@@ -45,7 +45,7 @@ const EmergencyCTA: React.FC = () => {
         </div>
         
         <div className="grid grid-cols-2 gap-3 mb-4">
-          <button className="flex items-center justify-center gap-2 bg-primary text-white rounded-xl p-3 text-sm font-medium transition-all hover:shadow-lg hover:shadow-primary/20 active:scale-95">
+          <button className="flex items-center justify-center gap-2 bg-primary text-white rounded-xl p-3 text-sm font-medium transition-all hover:shadow-lg hover:shadow-primary/10 active:scale-95">
             <Upload className="h-4 w-4" />
             Upload Image
           </button>
@@ -56,7 +56,7 @@ const EmergencyCTA: React.FC = () => {
           </button>
         </div>
         
-        <button className="w-full flex items-center justify-center gap-2 bg-accent text-white rounded-xl p-3 text-sm font-medium transition-all hover:bg-accent/90 active:scale-95">
+        <button className="w-full flex items-center justify-center gap-2 bg-red-500 text-white rounded-xl p-3 text-sm font-medium transition-all hover:bg-red-600 active:scale-95">
           <ScanEye className="h-4 w-4" />
           Emergency SOS
         </button>

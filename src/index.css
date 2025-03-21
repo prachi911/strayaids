@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 142 71% 45%;
+    --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 240 4.8% 95.9%;
@@ -22,15 +23,15 @@
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 319 66% 55%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 142 71% 45%;
+    --ring: 240 5.9% 10%;
 
     --radius: 0.5rem;
 
@@ -97,29 +98,6 @@
   
   .parallax-bg {
     transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
-  }
-
-  .gradient-border {
-    position: relative;
-  }
-  
-  .gradient-border::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-
-  .colorful-card {
-    @apply bg-gradient-to-br from-white to-secondary/50 hover:shadow-lg transition-all duration-300 hover:shadow-primary/10;
   }
 }
 
