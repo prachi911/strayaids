@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
@@ -81,7 +80,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onOpenChange }) => {
     // Simulate signup success
     toast({
       title: "Account created",
-      description: "Welcome to RescueTails! Please verify your email.",
+      description: "Welcome to Stray-Aids! Please verify your email.",
     });
     onOpenChange(false);
     signupForm.reset();
@@ -98,7 +97,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onOpenChange }) => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">
-            {isLogin ? "Welcome back" : "Join RescueTails"}
+            {isLogin ? "Welcome back" : "Join Stray-Aids"}
           </DialogTitle>
           <DialogDescription>
             {isLogin 

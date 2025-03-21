@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 
@@ -51,15 +50,15 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle }) => {
           backgroundImage: `url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=2969&auto=format&fit=crop')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          filter: 'brightness(0.6)',
+          filter: 'brightness(0.4)',
         }}
       />
 
       {/* Content */}
       <div className="relative h-full container mx-auto px-6 flex flex-col justify-center items-center text-center z-10">
-        <div className="glass max-w-4xl px-4 md:px-10 pt-12 pb-14 rounded-3xl">
-          <div className="bg-white/80 text-black text-xs font-medium px-4 py-1.5 rounded-full inline-block mb-6 animate-fade-in opacity-0">
-            Rescue Tails 🐾
+        <div className="glass-dark max-w-4xl px-4 md:px-10 pt-12 pb-14 rounded-3xl">
+          <div className="bg-white/90 text-black text-xs font-medium px-4 py-1.5 rounded-full inline-block mb-6 animate-fade-in opacity-0">
+            Stray-Aids 🐾
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight animate-fade-in opacity-0 delay-100">

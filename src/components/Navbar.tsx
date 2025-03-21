@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import LoginModal from './LoginModal';
@@ -37,7 +36,7 @@ const Navbar = () => {
             <span className={cn(
               'transition-all duration-300',
               scrolled ? 'text-primary' : 'text-white'
-            )}>RescueTails</span>
+            )}>Stray-Aids</span>
           </a>
           
           <nav className="hidden md:flex items-center space-x-8">
