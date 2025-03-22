@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import LoginModal from './LoginModal';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +22,14 @@ const Navbar = () => {
     };
   }, [scrolled]);
 
+  const navItems = [
+    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'How It Works', path: '#how-it-works' },
+    { name: 'Success Stories', path: '#success-stories' },
+    { name: 'NGO Partners', path: '#ngo-partners' },
+    { name: 'Get Involved', path: '#get-involved' },
+  ];
+
   return (
     <>
       <header 
@@ -31,26 +41,27 @@ const Navbar = () => {
         )}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2 text-primary font-medium">
+          <Link to="/" className="flex items-center gap-2 text-primary font-medium">
             <span className="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center font-semibold text-sm">RT</span>
             <span className={cn(
               'transition-all duration-300',
               scrolled ? 'text-primary' : 'text-white'
-            )}>Stray-Aids</span>
-          </a>
+            )}>Stray-Aid</span>
+          </Link>
           
           <nav className="hidden md:flex items-center space-x-8">
-            {['How It Works', 'Success Stories', 'NGO Partners', 'Get Involved'].map((item) => (
-              <a 
-                key={item} 
-                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+            {navItems.map((item) => (
+              <Link 
+                key={item.name} 
+                to={item.path}
                 className={cn(
                   'text-sm font-medium transition-all duration-300 hover:opacity-75',
-                  scrolled ? 'text-primary' : 'text-white'
+                  scrolled ? 'text-primary' : 'text-white',
+                  location.pathname === item.path && 'opacity-75'
                 )}
               >
-                {item}
-              </a>
+                {item.name}
+              </Link>
             ))}
           </nav>
           

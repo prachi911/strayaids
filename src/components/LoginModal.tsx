@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import { 
   Form,
   FormControl,
@@ -43,6 +45,8 @@ interface LoginModalProps {
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onOpenChange }) => {
   const [isLogin, setIsLogin] = useState(true);
   const { toast } = useToast();
+  const navigate = useNavigate();
+  const { login, signup } = useAuth();
   
   // Login form
   const loginForm = useForm<LoginFormValues>({
@@ -64,26 +68,42 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onOpenChange }) => {
     },
   });
   
-  const handleLoginSubmit = (values: LoginFormValues) => {
-    console.log('Login submitted:', values);
-    // Simulate login success
-    toast({
-      title: "Logged in successfully",
-      description: `Welcome back!`,
-    });
-    onOpenChange(false);
-    loginForm.reset();
+  const handleLoginSubmit = async (values: LoginFormValues) => {
+    try {
+      await login(values.email, values.password);
+      toast({
+        title: "Logged in successfully",
+        description: `Welcome back!`,
+      });
+      onOpenChange(false);
+      loginForm.reset();
+      navigate('/dashboard');
+    } catch (error) {
+      toast({
+        title: "Login failed",
+        description: "Please check your credentials and try again.",
+        variant: "destructive",
+      });
+    }
   };
   
-  const handleSignupSubmit = (values: SignupFormValues) => {
-    console.log('Signup submitted:', values);
-    // Simulate signup success
-    toast({
-      title: "Account created",
-      description: "Welcome to Stray-Aids! Please verify your email.",
-    });
-    onOpenChange(false);
-    signupForm.reset();
+  const handleSignupSubmit = async (values: SignupFormValues) => {
+    try {
+      await signup(values.name, values.email, values.password);
+      toast({
+        title: "Account created",
+        description: "Welcome to Stray-Aid! Please verify your email.",
+      });
+      onOpenChange(false);
+      signupForm.reset();
+      navigate('/dashboard');
+    } catch (error) {
+      toast({
+        title: "Signup failed",
+        description: "Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
   
   const toggleForm = () => {
@@ -97,7 +117,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onOpenChange }) => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle className="text-xl font-bold">
-            {isLogin ? "Welcome back" : "Join Stray-Aids"}
+            {isLogin ? "Welcome back" : "Join Stray-Aid"}
           </DialogTitle>
           <DialogDescription>
             {isLogin 
